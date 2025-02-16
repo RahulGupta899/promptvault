@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PromptVault
 
-## Getting Started
+PromptVault is a web application where users can log in, share, and explore useful prompts for developers, students, and creatives. Whether you're looking for coding prompts, study tips, or creative ideas, PromptVault is your go-to platform for inspiration and collaboration.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## **Technologies Used**
+- **Node.js**: v20.10.0
+- **Next.js**: v15.1.7
+- **MongoDB**: Database for storing prompts and user data
+- **NextAuth.js**: Authentication (Google OAuth)
+- **Tailwind CSS**: Styling and responsive design
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## **Features**
+- **User Authentication**: Log in with Google OAuth.
+- **Share Prompts**: Users can share useful prompts with the community.
+- **Explore Prompts**: Browse and search for prompts shared by other users.
+- **Responsive Design**: Works seamlessly on desktop and mobile devices.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## **Installation Steps**
 
-To learn more about Next.js, take a look at the following resources:
+Follow these steps to set up and run PromptVault on your local machine:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the Repository**:
+   ```bash
+   git clone <repoUrl>
+2. **Navigate to the Project Directory**:
+    ```bash
+    cd promptvault
+1. **Install Dependencies:**:
+   ```bash
+   npm install
+1. **Create .env File**:
+   ```bash
+   touch .env
+1. **Add Environment Variables:**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   Open the .env file and add the following variables:
+   ```bash
+   GOOGLE_OAUTH_CLIENT_SECRET=#############
+   GOOGLE_OAUTH_CLIENT_ID=#################
+   MONGODB_URL=#################
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_URL_INTERNAL=http://localhost:3000
+   NEXTAUTH_SECRET=##################
+   ```
+   Replace ############# with your actual credentials:
+1. **Start the Application:**:
 
-## Deploy on Vercel
+   Run the Application in development mode 
+   ```bash
+   npm run dev
+![Application_Started](https://github.com/user-attachments/assets/ac81725a-fb53-4e1c-8bb6-bbf3cf968fd4)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Application_working](https://github.com/user-attachments/assets/3877c719-4884-476e-bdd1-8a9f741a386b)
+   
