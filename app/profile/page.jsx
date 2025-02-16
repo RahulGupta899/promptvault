@@ -21,6 +21,7 @@ const MyProfile = () => {
     }
     useEffect(()=>{
         if(session?.user.id) fetchUserPosts();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     const handleDelete = async (post) => {
         const hasConfirmed = confirm("Are you sure you want to delete this prompt.");
