@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import PromptCard from './PromptCard';
+import { useDebounce } from '@uidotdev/usehooks';
 
 const PromptCardList = ({ data, handleTagClick }) => {
     return (
@@ -18,16 +19,17 @@ const PromptCardList = ({ data, handleTagClick }) => {
 
 const Feed = () => {
     const [searchText, setSearchText] = useState('');
+    const debouncedSearchText = useDebounce(searchText, 600)
     const [posts, setPosts] = useState([]);
-    const handleSearchChange = (e) => {
-        setSearchText(e.target.value);
-    }
+    const [postsBackup, setPostsBackup] = useState([]);
+    console.log("Posts: ", posts)
     useEffect(() => {
         const fetchPosts = async () => {
             try {
                 const response = await fetch('/api/prompt');
                 const data = await response.json();
                 setPosts(data);
+                setPostsBackup(data);
             }
             catch (err) {
                 alert(err.message || "Can't load posts.")
@@ -35,6 +37,16 @@ const Feed = () => {
         }
         fetchPosts();
     }, []);
+    useEffect(()=>{
+        if(debouncedSearchText){
+            const filteredPosts = postsBackup.filter((p) => p.prompt.includes(debouncedSearchText) || p.tag.includes(debouncedSearchText) || p?.creator?.email.includes(debouncedSearchText) || p?.creator?.username.includes(debouncedSearchText))
+            setPosts(filteredPosts)
+        }
+        else{
+            setPosts(postsBackup)
+        }
+    },[debouncedSearchText])
+    
 
     return (
         <section className='feed'>
@@ -43,7 +55,7 @@ const Feed = () => {
                     type='text'
                     placeholder='Search for a tag or a username'
                     value={searchText}
-                    onChange={handleSearchChange}
+                    onChange={(e) => {setSearchText(e.target.value) }}
                     required
                     className='search_input'
                 />
@@ -51,7 +63,7 @@ const Feed = () => {
 
             <PromptCardList
                 data={posts}
-                handleTagClick={() => { }}
+                handleTagClick={()=>{}}
             />
         </section>
     )

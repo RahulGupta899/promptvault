@@ -7,7 +7,7 @@ const Home = () => {
         {/* Hide this line on  */}
         <br className="md:hidden" />
         <span className="orange_gradient text-center ">
-          AI-Powered Prompts
+          {' '}AI-Powered Prompts
         </span>
       </h1>
       <p className="text-center desc">
